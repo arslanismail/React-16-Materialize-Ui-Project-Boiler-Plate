@@ -17,6 +17,22 @@ export default class Utility {
     }
   }
 
+  static useCardStyles = makeStyles((theme) => ({
+    title: {
+      flexGrow: 1,
+      display: "none",
+      [theme.breakpoints.up("sm")]: {
+        display: "block",
+      },
+    },
+    content: {
+      marginTop: "10%",
+    },
+    barButton: {
+      marginLeft: "5%",
+    },
+  }));
+
   static useAppStyles = makeStyles((theme) => ({
     root: {
       width: "100%",
@@ -49,8 +65,8 @@ export default class Utility {
       width: "auto",
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(2),
-      [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-        width: 600,
+      [theme.breakpoints.up(800 + theme.spacing(2) * 2)]: {
+        width: "50%",
         marginLeft: "auto",
         marginRight: "auto",
       },

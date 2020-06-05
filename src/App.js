@@ -9,12 +9,14 @@ import {
 import Home from "./components/Home";
 import About from "./components/About";
 import GenericNotFound from "./components/GenericNotFound";
+import Contcat from "./components/Contact";
 import { Box, Container } from "@material-ui/core";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Utility from "./utils/Utility";
+import Card from "./components/layout/Card";
 
 function App(props) {
   const classes = Utility.useAppStyles();
@@ -36,6 +38,7 @@ function App(props) {
   return (
     <React.Fragment>
       <Layout>
+        <Card />
         <div className={classes.root}>
           <Stepper activeStep={activeStep} alternativeLabel>
             {steps.map((label) => (
@@ -49,6 +52,7 @@ function App(props) {
           <Switch>
             <Route path="/" exact component={Home}></Route>
             <Route path="/about" component={About}></Route>
+            <Route path="/contact" component={Contcat}></Route>
             <Route component={GenericNotFound} />
           </Switch>
 

@@ -1,9 +1,19 @@
 import React from "react";
-
+import { Button } from "@material-ui/core";
+import Utility from "./../utils/Utility";
 export default function Home() {
+  const classes = Utility.useCardStyles();
   return (
-    <div>
-      <h1 style={{ justifyContent: "center" }}>Home Screen Title</h1>
-    </div>
+    <React.Fragment>
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        color="primary"
+        className={classes.submit}
+      >
+        Back to Address Search
+      </Button>
+    </React.Fragment>
   );
 }

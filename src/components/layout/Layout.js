@@ -8,11 +8,10 @@ export default function Layout(props) {
   return (
     <React.Fragment>
       <Header />
-      <Grid xs={2}></Grid>
+
       <Grid xs={12}>
         <main className={classes.layout}>{props.children}</main>
       </Grid>
-      <Grid xs={2}></Grid>
     </React.Fragment>
   );
 }
