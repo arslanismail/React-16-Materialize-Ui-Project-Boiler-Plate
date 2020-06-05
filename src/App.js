@@ -48,7 +48,7 @@ function App(props) {
             ))}
           </Stepper>
         </div>
-        <div style={{ backgroundColor: "red" }}>
+        <div>
           <Switch>
             <Route path="/" exact component={Home}></Route>
             <Route path="/about" component={About}></Route>
@@ -56,7 +56,9 @@ function App(props) {
             <Route component={GenericNotFound} />
           </Switch>
 
-          <div className={classes.bottomButtons}>
+          
+        </div>
+        <div className={classes.bottomButtons}>
             <Button
               disabled={activeStep === 0}
               onClick={handleBack}
@@ -68,8 +70,8 @@ function App(props) {
               {activeStep === steps.length - 1 ? "Finish" : "Next"}
             </Button>
           </div>
-        </div>
       </Layout>
+     
     </React.Fragment>
   );
 }

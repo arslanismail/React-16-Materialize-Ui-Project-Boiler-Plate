@@ -72,4 +72,22 @@ export default class Utility {
       },
     },
   }));
+
+  static useFormStyles = makeStyles((theme) => ({
+    
+    form: {
+      width: '50%', // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+    },
+    backButton: {
+      width: '25%',
+      margin: theme.spacing(3, 0, 2),
+    },
+    root: {
+      flexGrow: 1,
+    },
+    typo:{
+      color:'#303F9F'
+    },
+  }));
 }
