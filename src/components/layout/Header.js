@@ -2,19 +2,11 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import Utility from "./../../utils/Utility";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  appBar: {
-    backgroundColor: "#043CFF",
-  },
-}));
 export default function Header() {
-  const classes = useStyles();
+  const classes = Utility.useHeaderStyles();
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>

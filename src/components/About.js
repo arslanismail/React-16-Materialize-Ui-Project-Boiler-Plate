@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Box, Container } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 
 export default class About extends Component {
   render() {

@@ -1,73 +1,27 @@
 import React from "react";
-import logo from "./logo.svg";
 import Layout from "./components/layout/Layout";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
-import "./App.css";
 import GenericNotFound from "./components/GenericNotFound";
-import { makeStyles } from "@material-ui/core/styles";
 import { Box, Container } from "@material-ui/core";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-  },
-  backButton: {
-    marginRight: theme.spacing(1),
-  },
-  instructions: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-  },
-  bottomButtons: {
-    position: "absolute",
-    width: "50%",
-    bottom: "5%",
-    right: "20px",
-  },
-}));
-
-function getSteps() {
-  return [
-    "Select master blaster campaign settings",
-    "Create an ad group",
-    "Create an ad",
-  ];
-}
-
-function getStepContent(stepIndex) {
-  switch (stepIndex) {
-    case 0:
-      return "Select campaign settings...";
-    case 1:
-      return "What is an ad group anyways?";
-    case 2:
-      return "This is the bit I really care about!";
-    default:
-      return "Unknown stepIndex";
-  }
-}
+import Utility from "./utils/Utility";
 
 function App() {
-  const classes = useStyles();
+  const classes = Utility.useAppStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const steps = getSteps();
+  const steps = Utility.getSteps();
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
   };
 
   return (
