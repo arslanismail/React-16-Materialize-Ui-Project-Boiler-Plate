@@ -1,23 +1,19 @@
 import { makeStyles } from "@material-ui/core/styles";
 export default class Utility {
   static getSteps() {
-    return [
-      "Select master blaster campaign settings",
-      "Create an ad group",
-      "Create an ad",
-    ];
+    return ["Home", "About", "Contact"];
   }
 
   static getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return "Select campaign settings...";
+        return "";
       case 1:
-        return "What is an ad group anyways?";
+        return "ABOUT";
       case 2:
-        return "This is the bit I really care about!";
+        return "CONTACT";
       default:
-        return "Unknown stepIndex";
+        return "";
     }
   }
 
