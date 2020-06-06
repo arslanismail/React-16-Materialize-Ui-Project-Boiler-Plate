@@ -22,6 +22,7 @@ export default function Home(props) {
   });
 
   const handleSuburb = (e) => {
+    console.log(e.target.value)
     setOptions({
       ...options,
       suburb: e.target.value,
@@ -104,6 +105,8 @@ export default function Home(props) {
         justifyContent: "center",
         alignContent: "center",
         textAlign: "center",
+        // backgroundColor:"#31353D",
+        
       }}
     >
       <Typography component="h1" variant="h4" className={classes.typo}>
@@ -112,7 +115,7 @@ export default function Home(props) {
       <Typography component="h1" variant="h6" className={classes.typo}>
         Register Office Address
       </Typography>
-      <p>Must be a Physical Address in Australia. Not POBOX Address</p>
+      <p className={classes.typo}>Must be a Physical Address in Australia. Not POBOX Address</p>
       {!options.addressSearchStatus ? (
         <SearchForm
           handleSeachField={(e) => handleSeachField(e)}
@@ -139,14 +142,18 @@ export default function Home(props) {
           />
         </React.Fragment>
       )}
+      <div>
       <OfficeOcupier
         isPermiseExists={options.isPermiseExists}
         permiseActionHandler={(e) => permiseActionHandler(e)}
       />
+      </div>
+      <div>
       <SpecialPurpose
         isSuperannuationTrustee={options.isSuperannuationTrustee}
         superannuationTrusteeHandler={superannuationTrusteeHandler}
       />
+      </div>
     </div>
   );
 }

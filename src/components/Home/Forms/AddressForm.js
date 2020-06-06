@@ -8,7 +8,7 @@ export default function AddressForm(props) {
   const classes = Utility.useFormStyles();
   return (
     <div>
-      <form noValidate>
+      <form style={{width:"50%",marginLeft:"10%"}} noValidate>
         <TextField
           variant="outlined"
           margin="normal"
@@ -56,6 +56,7 @@ export default function AddressForm(props) {
           onChange={props.suburbActionHandler}
           autoComplete="Text"
           autoFocus
+          style={{marginBottom:"10%"}}
         />
       </form>
     </div>

@@ -41,7 +41,9 @@ function App(props) {
     props.history.push(stepScreen);
   };
   return (
-    <React.Fragment>
+    <React.Fragment >
+     <div style={{backgroundColor:"#696969"}}>
+     
       <Layout
         handleBack={handleBack}
         steps={steps}
@@ -53,10 +55,10 @@ function App(props) {
         props.location.pathname === "/signup" ? (
           ""
         ) : (
-          <React.Fragment>
+          <React.Fragment >
             <Card />
-            <div className={classes.root}>
-              <Stepper activeStep={activeStep} alternativeLabel>
+            <div className={classes.root} style={{backgroundColor:"#B6B3A6"}}>
+              <Stepper activeStep={activeStep} style={{backgroundColor:"#B6B3A6"}} alternativeLabel>
                 {steps.map((label) => (
                   <Step key={label}>
                     <StepLabel>{label}</StepLabel>
@@ -69,17 +71,15 @@ function App(props) {
 
         <div>
           <Switch>
-            <Route
+            
+           {props.location.pathname === "/" ? (<div style={{backgroundColor:"#B6B3A6"}}><Route
               path="/"
               exact
               render={(props) => (
                 <Home {...props} permitNextStep={permitNextStep} />
               )}
-            />
-            <Route
-              path="/about"
-              render={(props) => <Home {...props} options={permitNextStep} />}
-            />
+            /></div>) : '' }
+          
             <Route path="/about" component={About}></Route>
             <Route path="/contact" component={Contcat}></Route>
             <Route path="/signin" component={SignIn}></Route>
@@ -93,7 +93,7 @@ function App(props) {
         ""
       ) : (
         <React.Fragment>
-          <div style={{ marginRight: "25%", float: "right", marginTop: "2%" }}>
+          <div style={{ marginRight: "20%", float: "right",backgroundColor:"lightgrey",marginTop:"1%",marginBottom:"2%"}}>
             <Button
               disabled={activeStep === 0}
               onClick={handleBack}
@@ -112,6 +112,7 @@ function App(props) {
           </div>
         </React.Fragment>
       )}
+     </div>
     </React.Fragment>
   );
 }
