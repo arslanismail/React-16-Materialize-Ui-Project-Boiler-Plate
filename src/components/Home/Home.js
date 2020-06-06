@@ -14,9 +14,44 @@ export default function Home(props) {
     addressSearchStatus: false,
     isPermiseExists: true,
     isSuperannuationTrustee: false,
-    isNextStep: true,
+    homeStepComplete: false,
+    officeUnitLevel: null,
+    streetAdderss: null,
+    state: null,
+    suburb: null,
   });
 
+  const handleSuburb = (e) => {
+    setOptions({
+      ...options,
+      suburb: e.target.value,
+    });
+    permitStep();
+  };
+
+  const handleStreetAddress = (e) => {
+    setOptions({
+      ...options,
+      streetAdderss: e.target.value,
+    });
+    permitStep();
+  };
+
+  const handleState = (e) => {
+    setOptions({
+      ...options,
+      state: e.target.value,
+    });
+    permitStep();
+  };
+
+  const handleUnit = (e) => {
+    setOptions({
+      ...options,
+      officeUnitLevel: e.target.value,
+    });
+    permitStep();
+  };
   const handleSeachField = (e) => {
     setOptions({
       ...options,
@@ -28,6 +63,17 @@ export default function Home(props) {
       ...options,
       addressSearchStatus: false,
     });
+  };
+  const permitStep = () => {
+    const condition =
+      options.suburb != null &&
+      options.addressSearchStatus &&
+      options.state != null &&
+      options.officeUnitLevel != null &&
+      options.streetAdderss != null;
+    if (condition) {
+      props.permitNextStep();
+    }
   };
   const permiseActionHandler = (e) => {
     setOptions({
@@ -44,7 +90,7 @@ export default function Home(props) {
   };
   const submitSearch = (e) => {
     e.preventDefault();
-    props.permitNextStep();
+    permitStep();
     //  Search In Api .......
     setOptions({
       ...options,
@@ -85,7 +131,12 @@ export default function Home(props) {
           >
             Back to Address Search
           </Button>
-          <AddressForm />
+          <AddressForm
+            suburbActionHandler={(e) => handleSuburb(e)}
+            stateActionHandler={(e) => handleState(e)}
+            unitActionHandler={(e) => handleUnit(e)}
+            streetActionHandler={(e) => handleStreetAddress(e)}
+          />
         </React.Fragment>
       )}
       <OfficeOcupier

@@ -10,13 +10,14 @@ import Home from "./components/Home/Home";
 import About from "./components/About";
 import GenericNotFound from "./components/GenericNotFound";
 import Contcat from "./components/Contact";
-import { Box, Container } from "@material-ui/core";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Utility from "./utils/Utility";
 import Card from "./components/layout/Card";
+import SignIn from "./components/Account/SignIn";
+import SignUp from "./components/Account/Signup";
 
 function App(props) {
   const classes = Utility.useAppStyles();
@@ -31,7 +32,6 @@ function App(props) {
   };
 
   const permitNextStep = () => {
-    console.log("in the parent");
     setNextStep(false);
   };
 
@@ -47,17 +47,26 @@ function App(props) {
         steps={steps}
         handleNext={handleNext}
         activeStep={activeStep}
+        conditionalRender={props.location.pathname}
       >
-        <Card />
-        <div className={classes.root}>
-          <Stepper activeStep={activeStep} alternativeLabel>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-        </div>
+        {props.location.pathname === "/signin" ||
+        props.location.pathname === "/signup" ? (
+          ""
+        ) : (
+          <React.Fragment>
+            <Card />
+            <div className={classes.root}>
+              <Stepper activeStep={activeStep} alternativeLabel>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+            </div>
+          </React.Fragment>
+        )}
+
         <div>
           <Switch>
             <Route
@@ -67,31 +76,42 @@ function App(props) {
                 <Home {...props} permitNextStep={permitNextStep} />
               )}
             />
+            <Route
+              path="/about"
+              render={(props) => <Home {...props} options={permitNextStep} />}
+            />
             <Route path="/about" component={About}></Route>
             <Route path="/contact" component={Contcat}></Route>
+            <Route path="/signin" component={SignIn}></Route>
+            <Route path="/signup" component={SignUp}></Route>
             <Route component={GenericNotFound} />
           </Switch>
         </div>
       </Layout>
-      <React.Fragment>
-        <div style={{ marginRight: "25%", float: "right", marginTop: "2%" }}>
-          <Button
-            disabled={activeStep === 0}
-            onClick={handleBack}
-            // className={classes.backButton}
-          >
-            Back
-          </Button>
-          <Button
-            disabled={nextStep}
-            variant="contained"
-            color="primary"
-            onClick={handleNext}
-          >
-            {activeStep === steps.length - 1 ? "Finish" : "Next"}
-          </Button>
-        </div>
-      </React.Fragment>
+      {props.location.pathname === "/signin" ||
+      props.location.pathname === "/signup" ? (
+        ""
+      ) : (
+        <React.Fragment>
+          <div style={{ marginRight: "25%", float: "right", marginTop: "2%" }}>
+            <Button
+              disabled={activeStep === 0}
+              onClick={handleBack}
+              // className={classes.backButton}
+            >
+              Back
+            </Button>
+            <Button
+              disabled={nextStep}
+              variant="contained"
+              color="primary"
+              onClick={handleNext}
+            >
+              {activeStep === steps.length - 1 ? "Finish" : "Next"}
+            </Button>
+          </div>
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 }
