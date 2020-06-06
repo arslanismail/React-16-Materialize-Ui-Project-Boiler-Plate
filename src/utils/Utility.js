@@ -116,4 +116,26 @@ export default class Utility {
       marginBottom: 12,
     },
   }));
+
+  static useAboutStyle = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      '& > *': {
+        margin: theme.spacing(1),
+        width: theme.spacing(16),
+        height: theme.spacing(16),
+        
+          background: "#f1f1f1",
+          '&:hover': {
+             background: "rgb(154,153,155)",
+          }
+          
+      },
+      typo: {
+        color: "#303F9F",
+        marginTop: "8%",
+      },
+    },
+  }));
 }
