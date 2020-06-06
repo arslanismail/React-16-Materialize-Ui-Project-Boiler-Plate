@@ -1,4 +1,8 @@
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Checkbox from "@material-ui/core/Checkbox";
+import { green } from "@material-ui/core/colors";
+import { withStyles } from "@material-ui/core/styles";
 export default class Utility {
   static getSteps() {
     return ["Home", "About", "Contact"];
@@ -73,21 +77,43 @@ export default class Utility {
     },
   }));
 
+  static GreenCheckbox = withStyles({
+    root: {
+      color: green[400],
+      "&$checked": {
+        color: green[600],
+      },
+    },
+    checked: {},
+  })((props) => <Checkbox color="default" {...props} />);
+
   static useFormStyles = makeStyles((theme) => ({
-    
     form: {
-      width: '50%', // Fix IE 11 issue.
+      width: "50%", // Fix IE 11 issue.
       marginTop: theme.spacing(1),
     },
     backButton: {
-      width: '25%',
+      width: "25%",
       margin: theme.spacing(3, 0, 2),
     },
-    root: {
-      flexGrow: 1,
+
+    typo: {
+      color: "#303F9F",
+      marginTop: "8%",
     },
-    typo:{
-      color:'#303F9F'
+    root: {
+      minWidth: 275,
+    },
+    bullet: {
+      display: "inline-block",
+      margin: "0 2px",
+      transform: "scale(0.8)",
+    },
+    title: {
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
     },
   }));
 }

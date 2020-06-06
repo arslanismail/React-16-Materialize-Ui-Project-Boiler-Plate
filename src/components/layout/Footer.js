@@ -1,9 +1,20 @@
 import React from "react";
-
-export default function Footer() {
+import { Button } from "@material-ui/core";
+export default function Footer(props) {
   return (
     <React.Fragment>
-      <h1>Footer</h1>
+      <div style={{ marginRight: "25%", float: "right", marginTop: "2%" }}>
+        <Button
+          disabled={props.activeStep === 0}
+          onClick={props.handleBack}
+          // className={classes.backButton}
+        >
+          Back
+        </Button>
+        <Button variant="contained" color="primary" onClick={props.handleNext}>
+          {props.activeStep === props.steps.length - 1 ? "Finish" : "Next"}
+        </Button>
+      </div>
     </React.Fragment>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Layout from "./components/layout/Layout";
 import {
   BrowserRouter as Router,
@@ -6,7 +6,7 @@ import {
   Route,
   withRouter,
 } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./components/Home/Home";
 import About from "./components/About";
 import GenericNotFound from "./components/GenericNotFound";
 import Contcat from "./components/Contact";
@@ -21,6 +21,7 @@ import Card from "./components/layout/Card";
 function App(props) {
   const classes = Utility.useAppStyles();
   const [activeStep, setActiveStep] = React.useState(0);
+  const [nextStep, setNextStep] = React.useState(true);
   const steps = Utility.getSteps();
 
   const handleNext = () => {
@@ -29,15 +30,24 @@ function App(props) {
     props.history.push(stepScreen);
   };
 
+  const permitNextStep = () => {
+    console.log("in the parent");
+    setNextStep(false);
+  };
+
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
     const stepScreen = Utility.getStepContent(activeStep - 1);
     props.history.push(stepScreen);
   };
-
   return (
     <React.Fragment>
-      <Layout>
+      <Layout
+        handleBack={handleBack}
+        steps={steps}
+        handleNext={handleNext}
+        activeStep={activeStep}
+      >
         <Card />
         <div className={classes.root}>
           <Stepper activeStep={activeStep} alternativeLabel>
@@ -50,28 +60,38 @@ function App(props) {
         </div>
         <div>
           <Switch>
-            <Route path="/" exact component={Home}></Route>
+            <Route
+              path="/"
+              exact
+              render={(props) => (
+                <Home {...props} permitNextStep={permitNextStep} />
+              )}
+            />
             <Route path="/about" component={About}></Route>
             <Route path="/contact" component={Contcat}></Route>
             <Route component={GenericNotFound} />
           </Switch>
-
-          
         </div>
-        <div className={classes.bottomButtons}>
-            <Button
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              className={classes.backButton}
-            >
-              Back
-            </Button>
-            <Button variant="contained" color="primary" onClick={handleNext}>
-              {activeStep === steps.length - 1 ? "Finish" : "Next"}
-            </Button>
-          </div>
       </Layout>
-     
+      <React.Fragment>
+        <div style={{ marginRight: "25%", float: "right", marginTop: "2%" }}>
+          <Button
+            disabled={activeStep === 0}
+            onClick={handleBack}
+            // className={classes.backButton}
+          >
+            Back
+          </Button>
+          <Button
+            disabled={nextStep}
+            variant="contained"
+            color="primary"
+            onClick={handleNext}
+          >
+            {activeStep === steps.length - 1 ? "Finish" : "Next"}
+          </Button>
+        </div>
+      </React.Fragment>
     </React.Fragment>
   );
 }
