@@ -56,7 +56,11 @@ function App(props) {
           <React.Fragment>
             <Card />
             <div className={classes.root}>
-              <Stepper activeStep={activeStep} alternativeLabel>
+              <Stepper
+                activeStep={activeStep}
+                alternativeLabel
+                style={{ backgroundColor: "red" }}
+              >
                 {steps.map((label) => (
                   <Step key={label}>
                     <StepLabel>{label}</StepLabel>
@@ -69,17 +73,16 @@ function App(props) {
 
         <div>
           <Switch>
-            <Route
-              path="/"
-              exact
-              render={(props) => (
-                <Home {...props} permitNextStep={permitNextStep} />
-              )}
-            />
-            <Route
-              path="/about"
-              render={(props) => <Home {...props} options={permitNextStep} />}
-            />
+            <div style={{ backgroundColor: "red" }}>
+              <Route
+                path="/"
+                exact
+                render={(props) => (
+                  <Home {...props} permitNextStep={permitNextStep} />
+                )}
+              />
+            </div>
+
             <Route path="/about" component={About}></Route>
             <Route path="/contact" component={Contcat}></Route>
             <Route path="/signin" component={SignIn}></Route>
