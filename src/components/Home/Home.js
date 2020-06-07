@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import { Button, Card } from "@material-ui/core";
 import Utility from "../../utils/Utility";
 import Typography from "@material-ui/core/Typography";
 import AddressForm from "./Forms/AddressForm";
@@ -112,53 +112,62 @@ export default function Home(props) {
         // backgroundColor:"#31353D",
       }}
     >
-      <Typography component="h1" variant="h4" className={classes.typo}>
-        Company Location
-      </Typography>
-      <Typography component="h1" variant="h6" className={classes.typo}>
-        Register Office Address
-      </Typography>
-      <p className={classes.typo}>
-        Must be a Physical Address in Australia. Not POBOX Address
-      </p>
-      {!options.addressSearchStatus ? (
-        <SearchForm
-          handleSeachField={(e) => handleSeachField(e)}
-          submitSearch={(e) => submitSearch(e)}
-          isDisabled={options.addressSearchValue === "" ? true : false}
-        />
-      ) : (
-        <React.Fragment>
-          <Button
-            type="backButton"
-            size="small"
-            variant="contained"
-            color="primary"
-            className={classes.backButton}
-            onClick={clearSearch}
-          >
-            Back to Address Search
-          </Button>
-          <AddressForm
-            suburbActionHandler={(e) => handleSuburb(e)}
-            stateActionHandler={(e) => handleState(e)}
-            unitActionHandler={(e) => handleUnit(e)}
-            streetActionHandler={(e) => handleStreetAddress(e)}
+      <Card style={{ backgroundColor: "rgb(182, 179, 166)" }}>
+        {" "}
+        <div style={{ marginTop: "2%" }}></div>
+        <Typography component="h1" variant="h4" className={classes.typo}>
+          Company Location
+        </Typography>
+        <Typography component="h1" variant="h6" className={classes.typo}>
+          Register Office Address
+        </Typography>
+        <p className={classes.typo}>
+          Must be a Physical Address in Australia. Not POBOX Address
+        </p>
+        {!options.addressSearchStatus ? (
+          <SearchForm
+            handleSeachField={(e) => handleSeachField(e)}
+            submitSearch={(e) => submitSearch(e)}
+            isDisabled={options.addressSearchValue === "" ? true : false}
           />
-        </React.Fragment>
-      )}
-      <div>
-        <OfficeOcupier
-          isPermiseExists={options.isPermiseExists}
-          permiseActionHandler={(e) => permiseActionHandler(e)}
-        />
-      </div>
-      <div>
-        <SpecialPurpose
-          isSuperannuationTrustee={options.isSuperannuationTrustee}
-          superannuationTrusteeHandler={superannuationTrusteeHandler}
-        />
-      </div>
+        ) : (
+          <React.Fragment>
+            <Button
+              type="backButton"
+              size="small"
+              variant="contained"
+              color="primary"
+              className={classes.backButton}
+              onClick={clearSearch}
+            >
+              Back to Address Search
+            </Button>
+            <AddressForm
+              suburbActionHandler={(e) => handleSuburb(e)}
+              stateActionHandler={(e) => handleState(e)}
+              unitActionHandler={(e) => handleUnit(e)}
+              streetActionHandler={(e) => handleStreetAddress(e)}
+            />
+          </React.Fragment>
+        )}
+      </Card>
+
+      <Card style={{ backgroundColor: "rgb(182, 179, 166)" }}>
+        <div>
+          <OfficeOcupier
+            isPermiseExists={options.isPermiseExists}
+            permiseActionHandler={(e) => permiseActionHandler(e)}
+          />
+        </div>
+      </Card>
+      <Card style={{ backgroundColor: "rgb(182, 179, 166)" }}>
+        <div>
+          <SpecialPurpose
+            isSuperannuationTrustee={options.isSuperannuationTrustee}
+            superannuationTrusteeHandler={superannuationTrusteeHandler}
+          />
+        </div>
+      </Card>
     </div>
   );
 }

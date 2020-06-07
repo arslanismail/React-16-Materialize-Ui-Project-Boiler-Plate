@@ -31,7 +31,7 @@ export default class Utility {
     },
     content: {
       marginTop: "10%",
-      backgroundColor:"#31353D",
+      backgroundColor: "#31353D",
     },
     barButton: {
       marginLeft: "5%",
@@ -41,7 +41,6 @@ export default class Utility {
   static useAppStyles = makeStyles((theme) => ({
     root: {
       width: "100%",
-      
     },
     backButton: {
       marginRight: theme.spacing(1),
@@ -101,8 +100,7 @@ export default class Utility {
 
     typo: {
       color: "#31353D",
-      paddingTop:"5%"
-      
+      paddingTop: "2%",
     },
     root: {
       minWidth: 275,
@@ -121,18 +119,17 @@ export default class Utility {
   }));
   static useAboutStyle = makeStyles((theme) => ({
     root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      '& > *': {
+      display: "flex",
+      flexWrap: "wrap",
+      "& > *": {
         margin: theme.spacing(1),
         width: theme.spacing(16),
         height: theme.spacing(16),
-        
-          background: "#f1f1f1",
-          '&:hover': {
-             background: "rgb(154,153,155)",
-          }
-          
+
+        background: "#f1f1f1",
+        "&:hover": {
+          background: "rgb(154,153,155)",
+        },
       },
       typo: {
         color: "#303F9F",

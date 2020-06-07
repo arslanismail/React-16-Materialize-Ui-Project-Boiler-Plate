@@ -42,7 +42,7 @@ function App(props) {
   };
   return (
     <React.Fragment>
-      <div style={{ backgroundColor: "#696969" }}>
+      <div style={{ backgroundColor: "rgb(104, 109, 89)" }}>
         <Layout
           handleBack={handleBack}
           steps={steps}
