@@ -32,7 +32,55 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
+  const [signIn,setSignIn] = React.useState({
+    email:null,
+    password:null,
+    remember:false,
+   
+  });
+
+  const handleEmail = (e) => {
+    console.log(e.target.value)
+    setSignIn({
+      signIn,
+      email: e.target.value,
+    });
+    
+  };
+  const handleRemember = (e) => {
+    setSignIn({
+      ...signIn,
+      remember: !signIn.remember,
+    });
+    
+  };
+
+  const handlePassword = (e) => {
+    
+    setSignIn({
+      signIn,
+      password: e.target.value,
+    });
+  };
+
+  const handleSubmitClick = (e) => {
+    e.preventDefault();
+    if( signIn.password=="asad"  ) {
+        console.log("login")
+    } else {
+      console.log("invalid login data")
+       console.log(signIn.password)
+       console.log(handleEmail)
+       console.log(signIn.email)
+       
+    }
+}
+  
+  // const handleLogin = () =>{
+  //   axios.post('http://localhost:3000/signin', { email: {handleEmail}, password: {handlePassword} });
+  // };
+
   const classes = useStyles();
 
   return (
@@ -56,6 +104,8 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={signIn.email}
+            onChange={handleEmail}
           />
           <TextField
             variant="outlined"
@@ -67,9 +117,11 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={signIn.password}
+            onChange={handlePassword}
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember" onChange={handleRemember} name="remember" color="primary" />}
             label="Remember me"
           />
           <Button
@@ -78,6 +130,7 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmitClick}
           >
             Sign In
           </Button>

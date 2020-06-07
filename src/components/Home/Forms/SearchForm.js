@@ -7,7 +7,7 @@ export default function SearchForm(props) {
   const classes = Utility.useFormStyles();
   return (
     <div>
-      <form style={{marginBottom:"10%"}}>
+      <form style={{marginBottom:"3%"}}>
         <TextField
           required
           id="search"

@@ -14,10 +14,13 @@ import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
+import StepButton from '@material-ui/core/StepButton';
 import Utility from "./utils/Utility";
 import Card from "./components/layout/Card";
+import CompanyName from  "./components/CompanyName";
 import SignIn from "./components/Account/SignIn";
 import SignUp from "./components/Account/Signup";
+
 
 function App(props) {
   const classes = Utility.useAppStyles();
@@ -40,6 +43,9 @@ function App(props) {
     const stepScreen = Utility.getStepContent(activeStep - 1);
     props.history.push(stepScreen);
   };
+  const handleStep = (step) => () => {
+    setActiveStep(step);
+  };
   return (
     <React.Fragment >
      <div style={{backgroundColor:"#696969"}}>
@@ -58,10 +64,12 @@ function App(props) {
           <React.Fragment >
             <Card />
             <div className={classes.root} style={{backgroundColor:"#B6B3A6"}}>
-              <Stepper activeStep={activeStep} style={{backgroundColor:"#B6B3A6"}} alternativeLabel>
-                {steps.map((label) => (
+              <Stepper nonLinear activeStep={activeStep} style={{backgroundColor:"#B6B3A6"}} alternativeLabel>
+                {steps.map((label, index) => (
                   <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
+                    <StepButton onClick={handleStep(index)}>
+              {label}
+            </StepButton>
                   </Step>
                 ))}
               </Stepper>
@@ -84,6 +92,7 @@ function App(props) {
             <Route path="/contact" component={Contcat}></Route>
             <Route path="/signin" component={SignIn}></Route>
             <Route path="/signup" component={SignUp}></Route>
+            <Route path="/company" component={CompanyName}></Route>
             <Route component={GenericNotFound} />
           </Switch>
         </div>

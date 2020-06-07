@@ -101,7 +101,7 @@ export default class Utility {
 
     typo: {
       color: "#31353D",
-      paddingTop:"5%"
+      paddingTop:"1%"
       
     },
     root: {

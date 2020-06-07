@@ -33,7 +33,70 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const [signUp,setSignUp] = React.useState({
+    firstName:null,
+    lastName:null,
+    email:null,
+    password:null,
+    contact:null,
+    extraEmail:null,
+
+  })
+  const handleFirstName = (e) => {
+    setSignUp({
+      ...signUp,
+      firstName: e.target.value,
+    });
+    
+  };
+  const handleEmail = (e) => {
+    setSignUp({
+      ...signUp,
+      lastName: e.target.value,
+    });
+    
+  };
+  const handleLastName = (e) => {
+    setSignUp({
+      ...signUp,
+      lastName: e.target.value,
+    });
+    
+  };
+
+  const handleContact = (e) => {
+    setSignUp({
+      ...signUp,
+      contact: e.target.value,
+    });
+    
+  };
+  const handlePassword = (e) => {
+    setSignUp({
+      ...signUp,
+      password: e.target.value,
+    });
+    
+  };
+
+  const handleExtraEmail = (e) => {
+    setSignUp({
+      ...signUp,
+      extraEmail: !signUp.remember,
+    });
+  }
   const classes = useStyles();
+  const handleSubmitClick = (e) => {
+    const condition =
+      signUp.firstName != null &&
+      signUp.lastName !=null &&
+      signUp.contact != null &&
+      signUp.password != null &&
+      signUp.email != null;
+    if (condition) {
+      console.log(e);
+    }else{console.log("not re")}
+  };
 
   return (
     <Container component="main" maxWidth="xs" style={{backgroundColor:"#B6B3A6"}}>
@@ -57,6 +120,7 @@ export default function SignUp() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={handleFirstName}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -68,6 +132,7 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={handleLastName}
               />
             </Grid>
             <Grid item xs={12}>
@@ -79,6 +144,7 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleEmail}
               />
             </Grid>
             <Grid item xs={12}>
@@ -90,6 +156,7 @@ export default function SignUp() {
                 label="Contact Number"
                 name="contact"
                 autoComplete="contact"
+                onChange={handleContact}
               />
             </Grid>
             <Grid item xs={12}>
@@ -102,11 +169,12 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handlePassword}
               />
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                control={<Checkbox value="allowExtraEmails" onChange={handleExtraEmail} name="extraEmail" color="primary" />}
                 label="I want to receive inspiration, marketing promotions and updates via email."
               />
             </Grid>
@@ -117,6 +185,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmitClick}
           >
             Sign Up
           </Button>

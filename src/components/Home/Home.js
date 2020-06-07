@@ -112,9 +112,11 @@ export default function Home(props) {
       <Typography component="h1" variant="h4" className={classes.typo}>
         Company Location
       </Typography>
+      <hr style={{ marginTop: "1%", marginBottom: "1%", width: "80%" }} />
       <Typography component="h1" variant="h6" className={classes.typo}>
         Register Office Address
       </Typography>
+      <hr style={{ marginTop: "1%", marginBottom: "3%", width: "80%" }} />
       <p className={classes.typo}>Must be a Physical Address in Australia. Not POBOX Address</p>
       {!options.addressSearchStatus ? (
         <SearchForm
