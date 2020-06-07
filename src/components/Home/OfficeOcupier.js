@@ -15,7 +15,7 @@ export default function OfficeOcupier(props) {
         Registered Office Occupier
       </Typography>
       <hr style={{ marginTop: "3%", marginBottom: "3%", width: "80%" }} />
-      <Typography>
+      <Typography >
         Does the company occupy the premises listed above?
       </Typography>
       <RadioGroup
@@ -60,7 +60,6 @@ export default function OfficeOcupier(props) {
             style={{
               marginTop: "3%",
               marginBottom: "8%",
-              marginLeft: "10%",
               float: "left",
             }}
           >

@@ -42,79 +42,96 @@ function App(props) {
   };
   return (
     <React.Fragment>
-      <Layout
-        handleBack={handleBack}
-        steps={steps}
-        handleNext={handleNext}
-        activeStep={activeStep}
-        conditionalRender={props.location.pathname}
-      >
+      <div style={{ backgroundColor: "#696969" }}>
+        <Layout
+          handleBack={handleBack}
+          steps={steps}
+          handleNext={handleNext}
+          activeStep={activeStep}
+          conditionalRender={props.location.pathname}
+        >
+          {props.location.pathname === "/signin" ||
+          props.location.pathname === "/signup" ? (
+            ""
+          ) : (
+            <React.Fragment>
+              <Card />
+              <div
+                className={classes.root}
+                style={{ backgroundColor: "#B6B3A6" }}
+              >
+                <Stepper
+                  activeStep={activeStep}
+                  style={{ backgroundColor: "#B6B3A6" }}
+                  alternativeLabel
+                >
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              </div>
+            </React.Fragment>
+          )}
+
+          <div>
+            <Switch>
+              {props.location.pathname === "/" ? (
+                <div style={{ backgroundColor: "#B6B3A6" }}>
+                  <Route
+                    path="/"
+                    exact
+                    render={(props) => (
+                      <Home {...props} permitNextStep={permitNextStep} />
+                    )}
+                  />
+                </div>
+              ) : (
+                ""
+              )}
+
+              <Route path="/about" component={About}></Route>
+              <Route path="/contact" component={Contcat}></Route>
+              <Route path="/signin" component={SignIn}></Route>
+              <Route path="/signup" component={SignUp}></Route>
+              <Route component={GenericNotFound} />
+            </Switch>
+          </div>
+        </Layout>
         {props.location.pathname === "/signin" ||
         props.location.pathname === "/signup" ? (
           ""
         ) : (
           <React.Fragment>
-            <Card />
-            <div className={classes.root}>
-              <Stepper
-                activeStep={activeStep}
-                alternativeLabel
-                style={{ backgroundColor: "red" }}
+            <div
+              style={{
+                marginRight: "20%",
+                float: "right",
+                backgroundColor: "lightgrey",
+                marginTop: "1%",
+                marginBottom: "2%",
+              }}
+            >
+              <Button
+                disabled={activeStep === 0}
+                onClick={handleBack}
+                // className={classes.backButton}
               >
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper>
+                Back
+              </Button>
+              <Button
+                disabled={nextStep}
+                variant="contained"
+                color="primary"
+                onClick={handleNext}
+              >
+                {activeStep === steps.length - 1 ? "Finish" : "Next"}
+              </Button>
             </div>
           </React.Fragment>
         )}
-
-        <div>
-          <Switch>
-            <div style={{ backgroundColor: "red" }}>
-              <Route
-                path="/"
-                exact
-                render={(props) => (
-                  <Home {...props} permitNextStep={permitNextStep} />
-                )}
-              />
-            </div>
-
-            <Route path="/about" component={About}></Route>
-            <Route path="/contact" component={Contcat}></Route>
-            <Route path="/signin" component={SignIn}></Route>
-            <Route path="/signup" component={SignUp}></Route>
-            <Route component={GenericNotFound} />
-          </Switch>
-        </div>
-      </Layout>
-      {props.location.pathname === "/signin" ||
-      props.location.pathname === "/signup" ? (
-        ""
-      ) : (
-        <React.Fragment>
-          <div style={{ marginRight: "25%", float: "right", marginTop: "2%" }}>
-            <Button
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              // className={classes.backButton}
-            >
-              Back
-            </Button>
-            <Button
-              disabled={nextStep}
-              variant="contained"
-              color="primary"
-              onClick={handleNext}
-            >
-              {activeStep === steps.length - 1 ? "Finish" : "Next"}
-            </Button>
-          </div>
-        </React.Fragment>
-      )}
+      </div>
     </React.Fragment>
   );
 }

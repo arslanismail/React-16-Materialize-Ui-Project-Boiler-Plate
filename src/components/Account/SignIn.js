@@ -36,7 +36,7 @@ export default function SignIn() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" style={{backgroundColor:"#B6B3A6"}}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -81,7 +81,7 @@ export default function SignIn() {
           >
             Sign In
           </Button>
-          <Grid container>
+          <Grid container style={{marginBottom:"5%"}}>
             <Grid item xs>
               <Link href="#" variant="body2">
                 Forgot password?

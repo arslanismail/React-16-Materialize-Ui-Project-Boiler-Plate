@@ -36,7 +36,7 @@ export default function SignUp() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" style={{backgroundColor:"#B6B3A6"}}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -120,7 +120,7 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justify="flex-end" style={{marginBottom:"5%"}}>
             <Grid item>
               <Link to="/signin">Already have an account? Sign in</Link>
             </Grid>

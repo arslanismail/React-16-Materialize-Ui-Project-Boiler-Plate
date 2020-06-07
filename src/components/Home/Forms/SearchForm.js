@@ -7,7 +7,7 @@ export default function SearchForm(props) {
   const classes = Utility.useFormStyles();
   return (
     <div>
-      <form>
+      <form style={{marginBottom:"10%"}}>
         <TextField
           required
           id="search"
@@ -15,7 +15,7 @@ export default function SearchForm(props) {
           name="search"
           autoComplete="Text"
           autoFocus
-          style={{ paddingRight: "2%" }}
+          style={{ paddingRight: "2%",marginBottom:"5%" }}
           onChange={props.handleSeachField}
         />
 

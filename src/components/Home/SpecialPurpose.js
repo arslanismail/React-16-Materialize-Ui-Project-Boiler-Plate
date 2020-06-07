@@ -15,6 +15,10 @@ export default function SpecialPurpose(props) {
   const classes = Utility.useFormStyles();
   return (
     <React.Fragment>
+      <div>
+        
+      
+      {/* <hr style={{ marginTop: "3%", marginBottom: "3%", width: "80%" }} /> */}
       <Typography component="h1" variant="h4" className={classes.typo}>
         Special Purpose
       </Typography>
@@ -47,7 +51,6 @@ export default function SpecialPurpose(props) {
             style={{
               marginTop: "3%",
               marginBottom: "8%",
-              marginLeft: "10%",
               float: "left",
             }}
           >
@@ -97,6 +100,7 @@ export default function SpecialPurpose(props) {
       ) : (
         ""
       )}
+      </div>
     </React.Fragment>
   );
 }

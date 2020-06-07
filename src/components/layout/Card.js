@@ -9,7 +9,7 @@ export default function Card() {
   const classes = Utility.useCardStyles();
   return (
     <div>
-      <AppBar position="static" className={classes.content}>
+      <AppBar position="static" style={{}}className={classes.content}>
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
             Company Registration

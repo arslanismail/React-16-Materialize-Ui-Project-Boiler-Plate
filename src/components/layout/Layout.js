@@ -9,16 +9,9 @@ export default function Layout(props) {
   return (
     <React.Fragment>
       <Header />
-      <Grid container spacing={6}>
-        <Grid xs={2}>
-          <Paper className={classes.paper}>xs=2</Paper>
-        </Grid>
-        <Grid xs={12}>
-          <main className={classes.layout}>{props.children}</main>
-        </Grid>
-        <Grid xs={2}>
-          <Paper className={classes.paper}>xs=2</Paper>
-        </Grid>
+
+      <Grid xs={12}>
+        <main className={classes.layout}>{props.children}</main>
       </Grid>
     </React.Fragment>
   );
